@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Catatan pembelajaran GitHub pada 21 November 2026. Dokumentasi pengalaman dan kendala saat mencoba melakukan commit dan push dari VS Code ke GitHub.">
+
+    <title>CV ONLINE Catatan Belajar GitHub — 21 November 2026</title>
+
+    <style>
+        :root {
+            --background: #f5f5f3;
+            --surface: #ffffff;
+            --text: #242424;
+            --muted: #777777;
+            --border: #e5e5e2;
+            --accent: #315b49;
+            --accent-light: #edf3ef;
+            --warning: #946b32;
+            --warning-light: #f8f2e8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont,
+                "Segoe UI", sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(100% - 40px, 850px);
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+
+        .navbar {
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .nav-content {
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-mark {
+            width: 30px;
+            height: 30px;
+            display: grid;
+            place-items: center;
+            background: var(--accent);
+            color: white;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Main content */
+
+        main {
+            padding: 76px 0 90px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 650;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 22px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        h1 {
+            max-width: 700px;
+            font-size: clamp(34px, 6vw, 52px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .intro {
+            max-width: 680px;
+            font-size: 16px;
+            color: #626262;
+            line-height: 1.8;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin-top: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .meta-item {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .meta-item strong {
+            display: block;
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        /* Article */
+
+        .article {
+            padding-top: 38px;
+        }
+
+        .section-heading {
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .issue {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 16px;
+        }
+
+        .issue-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .issue-number {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .issue h3 {
+            font-size: 16px;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+        }
+
+        .issue p {
+            color: #626262;
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding: 22px 24px;
+            background: var(--warning-light);
+            border-left: 3px solid var(--warning);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .note h3 {
+            color: #755329;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .note p {
+            color: #6e604e;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+
+        footer {
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+            padding: 25px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-tag {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 600px) {
+            main {
+                padding: 52px 0 65px;
+            }
+
+            .container {
+                width: min(100% - 32px, 850px);
+            }
+
+            h1 {
+                letter-spacing: -1.3px;
+            }
+
+            .intro {
+                font-size: 15px;
+            }
+
+            .issue {
+                padding: 20px;
+            }
+
+            .meta {
+                gap: 16px;
+            }
+
+            .nav-label {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="brand">
+                <span class="brand-mark">D</span>
+                <span>Arsyaa 12</span>
+            </a>
+
+            <span class="nav-label">Personal Documentation</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <header class="page-header">
+                <div class="eyebrow">
+                    Development Journal
+                </div>
+
+                <h1>
+                    Belajar GitHub:
+                    Pengalaman dan Kendala Pertama
+                </h1>
+
+                <p class="intro">
+                    Catatan pembelajaran hari ini bersama tim IT dan
+                    pembina IT (Pak Zul) mengenai proses mengunggah
+                    proyek dari Visual Studio Code ke GitHub.
+                    Dalam praktiknya, kami menemukan beberapa kendala
+                    yang menghambat proses commit dan push.
+                </p>
+
+                <div class="meta">
+                    <div class="meta-item">
+                        TANGGAL
+                        <strong>Sabtu, 21 November 2026</strong>
+                    </div>
+
+                    <div class="meta-item">
+                        TOPIK
+                        <strong>Git & GitHub</strong>
+                    </div>
+
+                    <div class="meta-item">
+                        KEGIATAN
+                        <strong>Praktik dan Troubleshooting</strong>
+                    </div>
+                </div>
+            </header>
+
+            <article class="article">
+
+                <h2 class="section-heading">
+                    Kendala yang Ditemukan
+                </h2>
+
+                <p class="section-description">
+                    Berikut adalah dua permasalahan yang kami
+                    temui selama proses pembelajaran.
+                </p>
+
+                <section class="issue">
+                    <div class="issue-header">
+                        <span class="issue-number">01</span>
+                        <h3>Aplikasi Desktop Hilang Setelah Restart</h3>
+                    </div>
+
+                    <p>
+                        Kendala pertama berasal dari komputer
+                        laboratorium TKJ. Setiap kali pengguna atau
+                        siswa menginstal aplikasi desktop, seperti
+                        Adobe Premiere dan aplikasi lainnya, proses
+                        instalasi berjalan dengan normal. Aplikasi
+                        bahkan dapat dibuka dan digunakan setelah
+                        berhasil diinstal.
+
+                        Namun, setelah komputer di-restart,
+                        aplikasi yang sebelumnya telah diinstal
+                        justru menghilang. Kondisi ini menjadi
+                        hambatan karena aplikasi yang dibutuhkan
+                        untuk kegiatan pembelajaran tidak dapat
+                        dipertahankan setelah komputer dinyalakan
+                        kembali.
+                    </p>
+                </section>
+
+                <section class="issue">
+                    <div class="issue-header">
+                        <span class="issue-number">02</span>
+                        <h3>Kendala Saat Pendaftaran Akun GitHub</h3>
+                    </div>
+
+                    <p>
+                        Kendala berikutnya terjadi pada tahap awal,
+                        yaitu ketika mencoba mendaftarkan akun
+                        GitHub. Proses pendaftaran beberapa kali
+                        mengalami kegagalan setelah percobaan
+                        dilakukan secara berulang menggunakan
+                        alamat IP yang sama.
+
+                        Percobaan tersebut dilakukan dengan
+                        jeda waktu yang sangat singkat, kurang
+                        lebih tiga detik. Akibatnya, proses
+                        pembuatan akun menjadi terhambat dan
+                        kami belum dapat melanjutkan ke tahap
+                        berikutnya dengan lancar.
+                    </p>
+                </section>
+
+                <aside class="note">
+                    <h3>Catatan Pembelajaran</h3>
+                    <p>
+                        Praktik hari ini menunjukkan bahwa proses
+                        belajar menggunakan GitHub tidak hanya
+                        berkaitan dengan penulisan kode, tetapi
+                        juga melibatkan kesiapan lingkungan
+                        komputer dan proses pengelolaan akun.
+                        Kedua kendala tersebut menjadi bagian
+                        dari pengalaman troubleshooting selama
+                        pembelajaran berlangsung.
+                    </p>
+                </aside>
+
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>
+                © 2026 Learning Journal. Personal Learning Notes.
+            </p>
+
+            <span class="footer-tag">
+                Documented with HTML & CSS
+            </span>
+        </div>
+    </footer>
+
+</body>
+</html>
